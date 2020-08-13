@@ -10,3 +10,11 @@ def test_extract_program_title(tv_info_extractor):
     output = tv_info_extractor._extract_program_title(raw_title)
 
     assert output == expected
+
+
+def test_extract_channel_name(tv_info_extractor):
+    raw_description = '8/14 23:40～0:10 [フジテレビ(Ch.8)]'
+    expected = 'フジテレビ(Ch.8)'
+    output = tv_info_extractor._extract_channel_name(raw_description)
+
+    assert output == expected
