@@ -7,6 +7,21 @@ from bs4 import BeautifulSoup
 
 
 class TvInfoExtractor:
+    def extract_program_summaries(self, actor_name):
+        rss_data = self._fetch_rss_data(actor_name)
+        summaries = []
+        try:
+            for rss_item in rss_data.find_all('item'):
+                summary = self._extract_program_summary(
+                    actor_name=actor_name,
+                    rss_item=rss_item
+                )
+                summaries.append(summary)
+        except AttributeError:
+            pass
+
+        return summaries
+
     def _fetch_rss_data(self, actor_name):
         try:
             content = requests.get(self._compose_url(actor_name)).content
