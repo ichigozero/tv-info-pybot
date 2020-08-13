@@ -1,8 +1,18 @@
+import urllib.parse
 import datetime
 import re
 
 
 class TvInfoExtractor:
+    def _compose_url(self, actor_name):
+        escaped_name = urllib.parse.quote(actor_name)
+        return (
+            'https://www.tvkingdom.jp/rss/'
+            'schedulesBySearch.action?'
+            'condition.keyword={}&'
+            'stationPlatformId=0'
+        ).format(escaped_name)
+
     def _extract_program_summary(self, actor_name, rss_item):
         return {
             'actor_name': actor_name,

@@ -3,6 +3,17 @@ from datetime import datetime
 from bs4 import BeautifulSoup
 
 
+def test_compose_url(tv_info_extractor):
+    expected = (
+        'https://www.tvkingdom.jp/rss/schedulesBySearch.action?'
+        'condition.keyword=%E5%A2%97%E7%94%B0%E8%B2%B4%E4%B9%85&'
+        'stationPlatformId=0'
+    )
+    output = tv_info_extractor._compose_url('増田貴久')
+
+    assert output == expected
+
+
 def test_extract_program_summary(rss_file, tv_info_extractor):
     parsed_rss = BeautifulSoup(rss_file, 'xml')
     rss_item = parsed_rss.item
