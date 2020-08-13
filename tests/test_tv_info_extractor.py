@@ -1,6 +1,37 @@
 from datetime import datetime
 
+import requests
 from bs4 import BeautifulSoup
+
+DUMMY_URL = 'http://localhost'
+
+
+def test_fetch_rss_data(requests_mock, mocker, rss_data, tv_info_extractor):
+    requests_mock.get(DUMMY_URL, content=rss_data)
+    mocker.patch(
+        target='tv_info_pybot.TvInfoExtractor._compose_url',
+        return_value=DUMMY_URL
+    )
+    expected = BeautifulSoup(rss_data, 'xml')
+    output = tv_info_extractor._fetch_rss_data('増田貴久')
+
+    assert output == expected
+
+
+def test_failing_to_fetch_rss_data(
+        requests_mock,
+        mocker,
+        rss_data,
+        tv_info_extractor
+):
+    requests_mock.get(DUMMY_URL, exc=requests.exceptions.HTTPError)
+    mocker.patch(
+        target='tv_info_pybot.TvInfoExtractor._compose_url',
+        return_value=DUMMY_URL
+    )
+    output = tv_info_extractor._fetch_rss_data('増田貴久')
+
+    assert output is None
 
 
 def test_compose_url(tv_info_extractor):
@@ -14,8 +45,8 @@ def test_compose_url(tv_info_extractor):
     assert output == expected
 
 
-def test_extract_program_summary(rss_file, tv_info_extractor):
-    parsed_rss = BeautifulSoup(rss_file, 'xml')
+def test_extract_program_summary(rss_data, tv_info_extractor):
+    parsed_rss = BeautifulSoup(rss_data, 'xml')
     rss_item = parsed_rss.item
     expected = {
         'actor_name': '増田貴久',

@@ -2,8 +2,18 @@ import urllib.parse
 import datetime
 import re
 
+import requests
+from bs4 import BeautifulSoup
+
 
 class TvInfoExtractor:
+    def _fetch_rss_data(self, actor_name):
+        try:
+            content = requests.get(self._compose_url(actor_name)).content
+            return BeautifulSoup(content, 'xml')
+        except requests.exceptions.RequestException:
+            return None
+
     def _compose_url(self, actor_name):
         escaped_name = urllib.parse.quote(actor_name)
         return (

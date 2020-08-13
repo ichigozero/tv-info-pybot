@@ -15,7 +15,7 @@ def test_file(filename):
 
 
 @pytest.fixture(scope='module')
-def rss_file():
+def rss_data():
     return test_file('rss.xml').encode('utf-8')
 
 
