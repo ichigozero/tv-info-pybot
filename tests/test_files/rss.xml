@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rdf:rdf xmlns="http://purl.org/rss/1.0/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+ <channel rdf:about="https://www.tvkingdom.jp/">
+  <title>
+   Gガイド.テレビ王国 - 検索結果のRSS配信 - すべての番組(東京)
+  </title>
+  <link/>
+  https://www.tvkingdom.jp/
+  <description>
+   テレビ番組情報を提供しています。局の都合により、番組内容、放送時間などが変更になる事があります。番組データ提供元：（株）インタラクティブ・プログラム・ガイド。この情報の無断複写・転載を禁じます。
+  </description>
+  <items>
+   <rdf:seq>
+    <rdf:li rdf:resource="https://www.tvkingdom.jp/schedule/101056202008142340.action?from=rss">
+    </rdf:li>
+    <rdf:li rdf:resource="https://www.tvkingdom.jp/schedule/101040202008152100.action?from=rss">
+    </rdf:li>
+    <rdf:li rdf:resource="https://www.tvkingdom.jp/schedule/101040202008161025.action?from=rss">
+    </rdf:li>
+    <rdf:li rdf:resource="https://www.tvkingdom.jp/schedule/101040202008162100.action?from=rss">
+    </rdf:li>
+   </rdf:seq>
+  </items>
+  <dc:language>
+   ja
+  </dc:language>
+  <dc:publisher>
+   SMN株式会社 Gガイド.テレビ王国
+  </dc:publisher>
+  <dc:creator>
+   SMN株式会社 Gガイド.テレビ王国
+  </dc:creator>
+  <dc:rights>
+   Copyright 1999-2020 SMN Corporation. Copyright 2020 Interactive Program Guide Inc.
+  </dc:rights>
+  <dc:date>
+   2020-08-13T07:48+09:00
+  </dc:date>
+ </channel>
+ <item rdf:about="https://www.tvkingdom.jp/schedule/101056202008142340.action?from=rss">
+  <title>
+   ネタパレ【爆笑新作!ミキ・四千頭身・ラランド・蛙亭・トット・サンシャイン他】[字]
+  </title>
+  <link/>
+  https://www.tvkingdom.jp/schedule/101056202008142340.action?from=rss
+  <description>
+   8/14 23:40～0:10 [フジテレビ(Ch.8)]
+  </description>
+  <dc:subject>
+   バラエティー
+  </dc:subject>
+  <dc:date>
+   2020-08-14T23:40+09:00
+  </dc:date>
+  <dc:relation>
+   32740:1056:37496
+  </dc:relation>
+ </item>
+ <item rdf:about="https://www.tvkingdom.jp/schedule/101040202008152100.action?from=rss">
+  <title>
+   嵐にしやがれ【嵐VS増田貴久&amp;岸優太デスマッチ対決】[字][デ]
+  </title>
+  <link/>
+  https://www.tvkingdom.jp/schedule/101040202008152100.action?from=rss
+  <description>
+   8/15 21:00～21:54 [日テレ(Ch.4)]
+  </description>
+  <dc:subject>
+   バラエティー
+  </dc:subject>
+  <dc:date>
+   2020-08-15T21:00+09:00
+  </dc:date>
+  <dc:relation>
+   32738:1040:11840
+  </dc:relation>
+ </item>
+ <item rdf:about="https://www.tvkingdom.jp/schedule/101040202008161025.action?from=rss">
+  <title>
+   ニノさん【二宮和也と増田&amp;重岡&amp;岸!夢中6番勝負のはずが…まさかの展開に】[字]
+  </title>
+  <link/>
+  https://www.tvkingdom.jp/schedule/101040202008161025.action?from=rss
+  <description>
+   8/16 10:25～11:25 [日テレ(Ch.4)]
+  </description>
+  <dc:subject>
+   バラエティー
+  </dc:subject>
+  <dc:date>
+   2020-08-16T10:25+09:00
+  </dc:date>
+  <dc:relation>
+   32738:1040:11859
+  </dc:relation>
+ </item>
+ <item rdf:about="https://www.tvkingdom.jp/schedule/101040202008162100.action?from=rss">
+  <title>
+   行列のできる法律相談所[字]
+  </title>
+  <link/>
+  https://www.tvkingdom.jp/schedule/101040202008162100.action?from=rss
+  <description>
+   8/16 21:00～21:54 [日テレ(Ch.4)]
+  </description>
+  <dc:subject>
+   バラエティー , 
+        ドキュメンタリー／教養 , 
+        趣味／教育
+  </dc:subject>
+  <dc:date>
+   2020-08-16T21:00+09:00
+  </dc:date>
+  <dc:relation>
+   32738:1040:11877
+  </dc:relation>
+ </item>
+</rdf:rdf>

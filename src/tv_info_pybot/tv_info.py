@@ -3,6 +3,19 @@ import re
 
 
 class TvInfoExtractor:
+    def _extract_program_summary(self, actor_name, rss_item):
+        return {
+            'actor_name': actor_name,
+            'title': self._extract_program_title(
+                rss_item.title.get_text(strip=True)),
+            'channel': self._extract_channel_name(
+                rss_item.description.get_text(strip=True)),
+            'schedule': self._extract_program_schedule(
+                raw_date=rss_item.date.get_text(strip=True),
+                raw_description=rss_item.description.get_text(strip=True)
+            )
+        }
+
     def _extract_program_title(self, raw_title):
         return re.sub(r'\[.\]', '', raw_title)
 
