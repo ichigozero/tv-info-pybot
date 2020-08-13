@@ -6,6 +6,25 @@ from bs4 import BeautifulSoup
 DUMMY_URL = 'http://localhost'
 
 
+def test_extract_program_summaries_of_multiple_actors(
+    mocker,
+    rss_data,
+    tv_info_extractor
+):
+    mocker.patch(
+        target='tv_info_pybot.TvInfoExtractor._fetch_rss_data',
+        return_value=BeautifulSoup(rss_data, 'xml')
+    )
+    output = (
+        tv_info_extractor
+        .extract_program_summaries_of_multiple_actors(
+            ['あ', 'い']
+        )
+    )
+
+    assert len(output) == 8
+
+
 def test_extract_program_summaries(mocker, rss_data, tv_info_extractor):
     mocker.patch(
         target='tv_info_pybot.TvInfoExtractor._fetch_rss_data',

@@ -1,5 +1,6 @@
 import urllib.parse
 import datetime
+import itertools
 import re
 
 import requests
@@ -7,6 +8,13 @@ from bs4 import BeautifulSoup
 
 
 class TvInfoExtractor:
+    def extract_program_summaries_of_multiple_actors(self, actor_names):
+        output = []
+        for actor_name in actor_names:
+            output.append(self.extract_program_summaries(actor_name))
+
+        return list(itertools.chain(*output))
+
     def extract_program_summaries(self, actor_name):
         rss_data = self._fetch_rss_data(actor_name)
         summaries = []
