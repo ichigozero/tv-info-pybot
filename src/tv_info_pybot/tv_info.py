@@ -70,10 +70,11 @@ class TvInfoExtractor:
             r'[0-9]+\/[0-9]+\s[0-9]+:[0-9]+～([0-9]+):([0-9]+)',
             raw_description
         )
+        stripped_date = raw_date.replace(':', '')
         start_datetime = (
             datetime
             .datetime
-            .strptime(raw_date, "%Y-%m-%dT%H:%M%z")
+            .strptime(stripped_date, "%Y-%m-%dT%H%M%z")
             .replace(tzinfo=None)
         )
         end_datetime = datetime.datetime(
