@@ -2,6 +2,7 @@ import urllib.parse
 import datetime
 import itertools
 import re
+from datetime import timedelta
 
 import requests
 from bs4 import BeautifulSoup
@@ -89,3 +90,54 @@ class TvInfoExtractor:
             'start': start_datetime,
             'end': end_datetime
         }
+
+
+class TvInfoTweeter:
+    def _compose_tomorrow_tweet_text(self, program_summary):
+        start_datetime = program_summary['schedule']['start']
+        now = datetime.datetime.now()
+        next_30_minutes = now + timedelta(minutes=30)
+
+        if (now.hour >= 23
+                and now.minute >= 30
+                and start_datetime > next_30_minutes):
+            return self._compose_tweet_text(
+                program_summary=program_summary,
+                extra_text='明日、よろしくおねがいします。'
+            )
+        else:
+            return ''
+
+    def _compose_next_30_minutes_tweet_text(self, program_summary):
+        start_datetime = program_summary['schedule']['start']
+        next_30_minutes = datetime.datetime.now() + timedelta(minutes=30)
+
+        if datetime.datetime.now() < start_datetime <= next_30_minutes:
+            return self._compose_tweet_text(
+                program_summary=program_summary,
+                extra_text='まもなく放送開始です！'
+            )
+        else:
+            return ''
+
+    def _compose_tweet_text(self, program_summary, extra_text):
+        template = (
+            'Botからお知らせ\n'
+            '\n'
+            '【出演情報】\n'
+            '{actor_name}\n'
+            '{start_datetime}〜\n'
+            '{title}\n'
+            '{channel}\n'
+            '\n'
+            '{extra_text}'
+        )
+        start_datetime = program_summary['schedule']['start']
+
+        return template.format(
+            actor_name=program_summary['actor_name'],
+            start_datetime=start_datetime.strftime('%-m/%d %H:%M'),
+            title=program_summary['title'],
+            channel=program_summary['channel'],
+            extra_text=extra_text
+        )

@@ -1,8 +1,10 @@
 import os
+import datetime
 
 import pytest
 
 from tv_info_pybot import TvInfoExtractor
+from tv_info_pybot import TvInfoTweeter
 
 
 def test_file(filename):
@@ -19,6 +21,16 @@ def rss_data():
     return test_file('rss.xml').encode('utf-8')
 
 
+@pytest.fixture(scope='module')
+def fake_datetime_now():
+    return datetime.datetime(2020, 7, 28, 23, 30)
+
+
 @pytest.fixture
 def tv_info_extractor():
     return TvInfoExtractor()
+
+
+@pytest.fixture
+def tv_info_tweeter():
+    return TvInfoTweeter()
