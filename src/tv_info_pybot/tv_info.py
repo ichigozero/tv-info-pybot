@@ -94,15 +94,15 @@ class TvInfoExtractor:
 
 
 class TvInfoTweeter:
-    def __init__(
-            self,
-            consumer_key,
-            consumer_secret,
-            access_token,
-            access_token_secret
-    ):
-        auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
-        auth.set_access_token(access_token, access_token_secret)
+    def __init__(self, twitter_api_keys):
+        auth = tweepy.OAuthHandler(
+            twitter_api_keys.get('consumer_key'),
+            twitter_api_keys.get('consumer_secret')
+        )
+        auth.set_access_token(
+            twitter_api_keys.get('access_token'),
+            twitter_api_keys.get('access_token_secret')
+        )
         self._tweepy = tweepy.API(auth)
 
     def tweet_tomorrow_program(self, program_summary):
