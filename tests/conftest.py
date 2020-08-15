@@ -33,9 +33,10 @@ def tv_info_extractor():
 
 @pytest.fixture
 def tv_info_tweeter():
-    return TvInfoTweeter(
-        consumer_key='CONSUMER_KEY',
-        consumer_secret='CONSUMER_SECRET',
-        access_token='ACCESS_TOKEN',
-        access_token_secret='ACCESS_TOKEN_SECRET'
-    )
+    twitter_api_keys = {
+        'consumer_key': 'CONSUMER_KEY',
+        'consumer_secret': 'CONSUMER_SECRET',
+        'access_token': 'ACCESS_TOKEN',
+        'access_token_secret': 'ACCESS_TOKEN_SECRET'
+    }
+    return TvInfoTweeter(twitter_api_keys)

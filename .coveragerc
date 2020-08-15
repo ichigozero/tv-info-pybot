@@ -1,0 +1,6 @@
+[report]
+exclude_lines =
+    pragma: no cover
+    cmd()
+    def main
+    if __name__ == .__main__.:
