@@ -1,5 +1,43 @@
 import datetime
 
+import tweepy
+
+
+def test_tweet_tomorrow_program(mocker, tv_info_tweeter):
+    mocked_composer = mocker.patch.object(
+        target=tv_info_tweeter,
+        attribute='_compose_tomorrow_tweet_text',
+        return_value='bar'
+    )
+    mocked_tweepy = mocker.patch.object(
+        target=tweepy.API,
+        attribute='update_status'
+    )
+    program_summary = {}
+
+    tv_info_tweeter.tweet_tomorrow_program(program_summary)
+
+    mocked_composer.assert_called_once_with(program_summary)
+    mocked_tweepy.assert_called_once_with('bar')
+
+
+def test_tweet_next_30_minutes_program(mocker, tv_info_tweeter):
+    mocked_composer = mocker.patch.object(
+        target=tv_info_tweeter,
+        attribute='_compose_next_30_minutes_tweet_text',
+        return_value='bar'
+    )
+    mocked_tweepy = mocker.patch.object(
+        target=tweepy.API,
+        attribute='update_status'
+    )
+    program_summary = {}
+
+    tv_info_tweeter.tweet_next_30_minutes_program(program_summary)
+
+    mocked_composer.assert_called_once_with(program_summary)
+    mocked_tweepy.assert_called_once_with('bar')
+
 
 def test_compose_tomorrow_tweet_text(
         monkeypatch,

@@ -5,6 +5,7 @@ import re
 from datetime import timedelta
 
 import requests
+import tweepy
 from bs4 import BeautifulSoup
 
 
@@ -93,6 +94,33 @@ class TvInfoExtractor:
 
 
 class TvInfoTweeter:
+    def __init__(
+            self,
+            consumer_key,
+            consumer_secret,
+            access_token,
+            access_token_secret
+    ):
+        auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
+        auth.set_access_token(access_token, access_token_secret)
+        self._tweepy = tweepy.API(auth)
+
+    def tweet_tomorrow_program(self, program_summary):
+        tweet_text = self._compose_tomorrow_tweet_text(program_summary)
+        if tweet_text:
+            try:
+                self._tweepy.update_status(tweet_text)
+            except tweepy.error.TweepError:
+                pass
+
+    def tweet_next_30_minutes_program(self, program_summary):
+        tweet_text = self._compose_next_30_minutes_tweet_text(program_summary)
+        if tweet_text:
+            try:
+                self._tweepy.update_status(tweet_text)
+            except tweepy.error.TweepError:
+                pass
+
     def _compose_tomorrow_tweet_text(self, program_summary):
         start_datetime = program_summary['schedule']['start']
         now = datetime.datetime.now()
